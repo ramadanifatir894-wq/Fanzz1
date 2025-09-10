@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fanzmarket - website Produk Digital</title>
+  <style>
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      background: #0d001a;
+      font-family: Arial, sans-serif;
+      color: #fff;
+    }
+    canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+    }
+    .content {
+      position: relative;
+      text-align: center;
+      padding: 30px 10px;
+    }
+    .content img {
+      width: 300px;
+      border-radius: 15px;
+      box-shadow: 0 0 40px rgba(155,92,255,0.9);
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0); }
+    }
+    h1 {
+      margin: 20px 0;
+      font-size: 28px;
+      color: #e0b3ff;
+      text-shadow: 0 0 15px #9b5cff, 0 0 40px #ff00ff;
+    }
+    .produk {
+      display: grid;
+      gap: 15px;
+      max-width: 400px;
+      margin: 30px auto;
+    }
+    .card {
+      background: rgba(40, 0, 70, 0.7);
+      border-radius: 15px;
+      padding: 15px;
+      box-shadow: 0 0 20px rgba(155,92,255,0.5);
+      transition: transform .2s;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .card h3 {
+      margin: 0 0 5px;
+      color: #ffccff;
+    }
+    .card p { margin: 0 0 10px; }
+    .btn {
+      display: inline-block;
+      padding: 8px 15px;
+      background: #9b5cff;
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .btn:hover {
+      background: #b57aff;
+    }
+    .contact {
+      margin-top: 25px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bg"></canvas>
+
+  <div class="content">
+    <!-- Gambar anime dari Google Drive -->
+    <img src="https://docs.google.com/uc?export=download&id=1Jke7rS-2MesBQ_5d3hvFQ3O-CHXZldas" alt="Anime">
+
+    <h1>Fanzmarket - Top Up Produk Digital</h1>
+
+    <!-- Daftar Produk -->
+    <div class="produk">
+      <div class="card">
+        <h3>Pterodactyl Panel</h3>
+        <p>Rp 5.000</p>
+        <a class="btn" href="https://wa.me/6283855945518?text=Halo%20saya%20mau%20beli%20Pterodactyl%20Panel">Beli</a>
+      </div>
+      <div class="card">
+        <h3>Reseller Panel</h3>
+        <p>Rp 8.000</p>
+        <a class="btn" href="https://wa.me/6283855945518?text=Halo%20saya%20mau%20beli%20Reseller%20Panel">Beli</a>
+      </div>
+      <div class="card">
+        <h3>Admin Panel</h3>
+        <p>Rp 12.000</p>
+        <a class="btn" href="https://wa.me/6283855945518?text=Halo%20saya%20mau%20beli%20Admin%20Panel">Beli</a>
+      </div>
+      <div class="card">
+        <h3>Murid Unband</h3>
+        <p>Rp 20.000</p>
+        <a class="btn" href="https://wa.me/6283855945518?text=Halo%20saya%20mau%20beli%20Murid%20Unband">Beli</a>
+      </div>
+      <div class="card">
+        <h3>Jasa Unband / Kenon Spam</h3>
+        <p>Rp 15.000</p>
+        <a class="btn" href="https://wa.me/6283855945518?text=Halo%20saya%20mau%20beli%20Jasa%20Unband%20Kenon%20Spam">Beli</a>
+      </div>
+      <div class="card">
+        <h3>Kenon Permanen Hard Fresh</h3>
+        <p>Rp 30.000</p>
+        <a class="btn" href="https://wa.me/6283855945518?text=Halo%20saya%20mau%20beli%20Kenon%20Permanen%20Hard%20Fresh">Beli</a>
+      </div>
+    </div>
+
+    <div class="contact">
+      <p>📲 WhatsApp: <a href="https://wa.me/6283855945518" target="_blank">0838-5594-5518</a></p>
+      <p>📩 Telegram: <a href="https://t.me/FanzHosting1" target="_blank">@FanzHosting1</a></p>
+      <p>💳 Pembayaran via Dana: 0815-7298-1609</p>
+    </div>
+  </div>
+
+  <!-- Musik Havana dari Google Drive -->
+  <audio id="bgmusic" autoplay loop hidden>
+    <source src="https://docs.google.com/uc?export=download&id=1QBPP_JXQSi_Fa7V9iFMWOqbLYzVVJzlK" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // Partikel animasi
+    const canvas = document.getElementById('bg');
+    const ctx = canvas.getContext('2d');
+    function resize() {
+      canvas.width = innerWidth;
+      canvas.height = innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    const particles = Array.from({length: 100}, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      radius: Math.random() * 3 + 1,
+      dx: (Math.random() - 0.5) * 1.2,
+      dy: (Math.random() - 0.5) * 1.2,
+    }));
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'rgba(155,92,255,0.9)';
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fill();
+        p.x += p.dx;
+        p.y += p.dy;
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // Trik agar musik autoplay
+    document.addEventListener("click", () => {
+      const music = document.getElementById("bgmusic");
+      if (music.paused) music.play();
+    }, { once: true });
+  </script>
+</body>
+</html>
